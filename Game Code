@@ -1,0 +1,48 @@
+#
+# Michael Nolan
+# 20th June 2022
+# Dice Roll
+#
+import random
+import time
+
+def dices():
+    while True:
+        num_dice = input("Enter amount of dice to roll: ")
+        try:
+            num_dice = int(num_dice)
+            if num_dice < 1 or num_dice > 15:
+                print("Error: To little or too many dices, please try again.")
+            else:
+                return num_dice
+        except:
+            print("Error: Invalid input, please try again.")
+
+def rolls(num_dice):
+    while True:
+        num_rolls = input(f"Enter number of times you want to roll {num_dice} dices: ")
+        try:
+            num_rolls = int(num_rolls)
+            if num_rolls < 1:
+                print("Error: Invalid input, please try again.")
+            else:
+                return num_rolls
+        except:
+            print("Error: Invalid input, please try again.")
+
+def main(num_dice, num_rolls):
+    count = 1
+    count2 = 1
+
+    while count <= num_rolls:
+        print(f"Roll #{count}:")
+        while count2 <= num_dice:
+            print(f"Dice {count2}: {random.randint(1,6)}")
+            count2 += 1
+        count += 1
+        count2 = 1
+        time.sleep(2)
+
+x = dices()
+y = rolls(x)
+main(x, y)
